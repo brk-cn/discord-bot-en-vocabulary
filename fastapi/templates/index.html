@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vocabulary</title>
+    <link rel="stylesheet" href="../static/style.css">
+</head>
+
+<body>
+    <h1 class="font-freeman">ADD WORD TO YOUR VOCABULARY</h1>
+    <form action="/submit" method="post">
+        <input class="font-freeman" type="text" id="word_english" name="word_english" placeholder="word" />
+        <input class="font-freeman" type="text" id="word_class" name="word_class" placeholder="word class" />
+        <textarea class="font-freeman" name="word_turkish" id="word_turkish"
+            placeholder="turkish translation"></textarea>
+        <input class="font-freeman" type="submit" value="ADD">
+    </form>
+</body>
+
+</html>
