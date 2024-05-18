@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>All words</title>
+    <link rel="stylesheet" href="../static/style.css">
+</head>
+
+<body style="padding-top: 5rem; justify-content: start;">
+    <table class="font-freeman">
+        <tr>
+            <th>english</th>
+            <th>class</th>
+            <th>turkish</th>
+            <th></th>
+            <th></th>
+        </tr>
+        {% for word in words %}
+        <tr>
+            <td>{{ word["word_english"] }}</td>
+            <td>{{ word.word_class }}</td>
+            <td>{{ word.word_turkish }}</td>
+            <td><a href="/edit/{{ word._id }}">EDIT</a></td>
+            <td><a href="/delete/{{ word._id }}">DELETE</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kelime Düzenle</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1>Kelime Düzenle</h1>
+    <form action="/update-word/{{ word._id }}" method="post">
+        <label for="word_english">İngilizce Kelime:</label>
+        <input type="text" id="word_english" name="word_english" value="{{ word.word_english }}" required><br>
+        <label for="word_class">Kelime Türü:</label>
+        <input type="text" id="word_class" name="word_class" value="{{ word.word_class }}" required><br>
+        <label for="word_turkish">Türkçe Anlamı:</label>
+        <input type="text" id="word_turkish" name="word_turkish" value="{{ word.word_turkish }}" required><br>
+        <button type="submit">Güncelle</button>
+    </form>
+    <button onclick="location.href='/edit-words'" type="button">Geri Dön</button>
+</body>
+</html>

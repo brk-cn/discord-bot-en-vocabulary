@@ -10,6 +10,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     background-color: #1F2421;
 }
 
@@ -19,16 +20,9 @@ body {
     font-style: normal;
 }
 
-h1 {
-    font-size: 3.5rem;
-    margin-top: 5.5rem;
-    color: #216869;
-}
-
 form {
     width: 25%;
 }
-
 
 input[type="text"] {
     width: 100%;
@@ -58,8 +52,8 @@ input[type="text"]:focus {
     outline: none;
 }
 
-input[type="submit"] {
-    width: 25%;
+button {
+    width: 10rem;
     height: 3.5rem;
     display: block;
     margin: 0.5rem auto;
@@ -69,11 +63,11 @@ input[type="submit"] {
     color: #1F2421;
 }
 
-input[type="submit"]:hover {
+button:hover {
     scale: 1.05;
 }
 
-input[type="submit"]:active {
+button:active {
     scale: 0.95;
 }
 
@@ -84,4 +78,27 @@ input[type="submit"]:active {
     font-family: "Freeman", sans-serif;
     font-weight: 400;
     font-style: normal;
+}
+
+#latest-word {
+    width: 100%;
+    height: 2.5rem;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #9CC5A1;
+}
+
+table {
+    color: #9CC5A1;
+}
+
+table a {
+    text-decoration: none;
+    color: #216869;
+}
+
+table a:hover {
+    text-decoration: underline;
 }
