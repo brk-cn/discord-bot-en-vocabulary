@@ -9,13 +9,14 @@
 </head>
 
 <body>
+    {% include "header.html" %}
     <div id="latest-word" class="font-freeman">{{latest_word}}</div>
-    <form action="/submit" method="post">
-        <input class="font-freeman" type="text" id="word_english" name="word_english" placeholder="word" />
-        <input class="font-freeman" type="text" id="word_class" name="word_class" placeholder="word class" />
+    <form action="/add" method="post">
+        <input class="font-freeman" type="text" id="word_english" name="word_english" placeholder="word" required/>
+        <input class="font-freeman" type="text" id="word_class" name="word_class" placeholder="word class" required/>
         <textarea class="font-freeman" name="word_turkish" id="word_turkish"
-            placeholder="turkish translation"></textarea>
-        <button class="font-freeman">ADD</button>
+            placeholder="turkish translation" required></textarea>
+        <button class="font-freeman" type="submit">ADD</button>
     </form>
     <script>
         window.onload = () => {

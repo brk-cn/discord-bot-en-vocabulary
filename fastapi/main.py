@@ -29,11 +29,11 @@ async def index(request: Request):
 
 latest_word = ""
 @app.get("/add", response_class=HTMLResponse)
-async def add(request: Request):
+async def add_page(request: Request):
     return templates.TemplateResponse("add.html", {"request": request, "latest_word": latest_word})
 
-@app.post("/submit")
-async def submit(request: Request, word_english: str = Form(...), word_class: str = Form(...), word_turkish: str = Form(...)):
+@app.post("/add")
+async def add_word(word_english: str = Form(...), word_class: str = Form(...), word_turkish: str = Form(...)):
     word_data = {
         "word_english": word_english,
         "word_class": word_class,
@@ -46,6 +46,26 @@ async def submit(request: Request, word_english: str = Form(...), word_class: st
     return RedirectResponse(url="/add", status_code=303)
 
 @app.get("/words", response_class=HTMLResponse)
-async def words(request: Request):
+async def words_page(request: Request):
     words = list(collection.find())
     return templates.TemplateResponse("words.html", {"request": request, "words": words})
+
+@app.get("/edit/{word_id}", response_class=HTMLResponse)
+async def edit_page(request: Request, word_id: str):
+    word = collection.find_one({"_id": ObjectId(word_id)})
+    return templates.TemplateResponse("edit.html", {"request": request, "word": word})
+
+@app.post("/update/{word_id}", response_class=HTMLResponse)
+async def update_word(word_id: str, word_english: str = Form(...), word_class: str = Form(...), word_turkish: str = Form(...)):
+    updated_word_data = {
+        "word_english": word_english,
+        "word_class": word_class,
+        "word_turkish": word_turkish
+    }
+    collection.update_one({"_id": ObjectId(word_id)}, {"$set": updated_word_data})
+    return RedirectResponse(url="/words", status_code=303)
+
+@app.get("/delete/{word_id}", response_class=HTMLResponse)
+async def delete_word(word_id: str):
+    collection.delete_one({"_id": ObjectId(word_id)})
+    return RedirectResponse(url="/words", status_code=303)
